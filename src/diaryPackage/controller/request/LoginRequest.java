@@ -1,4 +1,4 @@
-package dto.request;
+package diaryPackage.controller.request;
 
 public class LoginRequest {
     private String username;

@@ -1,4 +1,4 @@
-package dto.request;
+package diaryPackage.controller.request;
 
 import java.time.LocalDateTime;
 

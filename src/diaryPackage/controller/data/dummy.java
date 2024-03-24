@@ -1,4 +1,4 @@
-package data;
+package diaryPackage.controller.data;
 
 public class dummy {
 }

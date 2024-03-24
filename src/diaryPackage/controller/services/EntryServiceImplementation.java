@@ -1,14 +1,12 @@
-package services;
+package diaryPackage.controller.services;
 
-import exceptions.EntryNotChangedException;
-import exceptions.EntryNotFoundException;
-import data.models.Entry;
-import dto.request.CreateEntryRequest;
-import dto.request.UpdateEntryRequest;
-import repositories.EntryRepository;
-import repositories.EntryRepositoryImplementation;
-
-import java.util.List;
+import diaryPackage.controller.exceptions.EntryNotChangedException;
+import diaryPackage.controller.exceptions.EntryNotFoundException;
+import diaryPackage.controller.data.models.Entry;
+import diaryPackage.controller.request.CreateEntryRequest;
+import diaryPackage.controller.request.UpdateEntryRequest;
+import diaryPackage.controller.repositories.EntryRepository;
+import diaryPackage.controller.repositories.EntryRepositoryImplementation;
 
 public class EntryServiceImplementation implements EntryService {
     private EntryRepository entryRepository = new EntryRepositoryImplementation();

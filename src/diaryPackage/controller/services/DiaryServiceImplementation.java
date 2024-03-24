@@ -1,19 +1,19 @@
-package services;
+package diaryPackage.controller.services;
 
-import dto.request.RegisterRequest;
-import exceptions.DiaryNotFoundException;
-import exceptions.EntryNotChangedException;
-import exceptions.EntryNotFoundException;
-import exceptions.IncorrectUsernameException;
-import data.models.Diary;
-import data.models.Entry;
-import dto.request.CreateEntryRequest;
-import dto.request.LoginRequest;
-import dto.request.UpdateEntryRequest;
-import repositories.DiaryRepository;
-import repositories.DiaryRepositoryImplementation;
-import repositories.EntryRepository;
-import repositories.EntryRepositoryImplementation;
+import diaryPackage.controller.request.RegisterRequest;
+import diaryPackage.controller.exceptions.DiaryNotFoundException;
+import diaryPackage.controller.exceptions.EntryNotChangedException;
+import diaryPackage.controller.exceptions.EntryNotFoundException;
+import diaryPackage.controller.exceptions.IncorrectUsernameException;
+import diaryPackage.controller.data.models.Diary;
+import diaryPackage.controller.data.models.Entry;
+import diaryPackage.controller.request.CreateEntryRequest;
+import diaryPackage.controller.request.LoginRequest;
+import diaryPackage.controller.request.UpdateEntryRequest;
+import diaryPackage.controller.repositories.DiaryRepository;
+import diaryPackage.controller.repositories.DiaryRepositoryImplementation;
+import diaryPackage.controller.repositories.EntryRepository;
+import diaryPackage.controller.repositories.EntryRepositoryImplementation;
 
 import java.util.List;
 

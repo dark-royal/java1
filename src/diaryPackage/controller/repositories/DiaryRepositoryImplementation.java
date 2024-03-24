@@ -1,6 +1,6 @@
-package repositories;
-import exceptions.DiaryNotFoundException;
-import data.models.Diary;
+package diaryPackage.controller.repositories;
+import diaryPackage.controller.exceptions.DiaryNotFoundException;
+import diaryPackage.controller.data.models.Diary;
 
 import java.util.ArrayList;
 import java.util.List;
