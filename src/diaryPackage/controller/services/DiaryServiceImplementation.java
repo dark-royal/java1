@@ -24,13 +24,16 @@ public class DiaryServiceImplementation implements DiaryService{
     private EntryRepository entryRepository;
     @Override
     public void registerUser(RegisterRequest registerRequest) {
-        Diary diary = new Diary();
-        if (diaryRepository.existsByUsernameAndPassword(registerRequest.getUsername(), registerRequest.getPassword())) {
-            throw new UsernameExistException("Username already exists");
-        }
-        diary.setUsername(registerRequest.getUsername());
-        diary.setPassword(registerRequest.getPassword());
-        diaryRepository.save(diary);
+        validate(registerRequest);
+            Diary diary = new Diary();
+            diary.setUsername(registerRequest.getUsername());
+            diary.setPassword(registerRequest.getPassword());
+            diaryRepository.save(diary);
+    }
+
+    public void validate(RegisterRequest registerRequest) {
+        Diary diary = diaryRepository.findByUsername(registerRequest.getUsername());
+        if (diary != null) throw new UsernameExistException("Username already exist");
     }
 
     @Override
