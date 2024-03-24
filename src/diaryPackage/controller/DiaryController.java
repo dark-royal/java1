@@ -39,7 +39,7 @@ public class DiaryController {
         public String logout(@PathVariable("name") String username){
             try{
                 diaryService.logout(username);
-                return "login successfully";
+                return "logout successfully";
             }catch (Exception e){
                 return e.getMessage();
             }

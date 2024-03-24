@@ -6,9 +6,10 @@ import diaryPackage.controller.request.CreateEntryRequest;
 import diaryPackage.controller.request.LoginRequest;
 import diaryPackage.controller.request.UpdateEntryRequest;
 import diaryPackage.controller.request.RegisterRequest;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public interface DiaryService {
     void registerUser(RegisterRequest registerRequest);
     void login(LoginRequest loginReques);

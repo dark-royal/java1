@@ -11,17 +11,17 @@ import diaryPackage.controller.request.CreateEntryRequest;
 import diaryPackage.controller.request.LoginRequest;
 import diaryPackage.controller.request.UpdateEntryRequest;
 import diaryPackage.controller.repositories.DiaryRepository;
-import diaryPackage.controller.repositories.DiaryRepositoryImplementation;
 import diaryPackage.controller.repositories.EntryRepository;
-import diaryPackage.controller.repositories.EntryRepositoryImplementation;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import java.util.List;
-
+@Service
 public class DiaryServiceImplementation implements DiaryService{
 
-
-    private DiaryRepository diaryRepository = new DiaryRepositoryImplementation();
-    private EntryRepository entryRepository = new EntryRepositoryImplementation();
+    @Autowired
+    private DiaryRepository diaryRepository;
+    @Autowired
+    private EntryRepository entryRepository;
     @Override
     public void registerUser(RegisterRequest registerRequest) {
         Diary diary = new Diary();

@@ -6,10 +6,13 @@ import diaryPackage.controller.data.models.Entry;
 import diaryPackage.controller.request.CreateEntryRequest;
 import diaryPackage.controller.request.UpdateEntryRequest;
 import diaryPackage.controller.repositories.EntryRepository;
-import diaryPackage.controller.repositories.EntryRepositoryImplementation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class EntryServiceImplementation implements EntryService {
-    private EntryRepository entryRepository = new EntryRepositoryImplementation();
+    @Autowired
+    private EntryRepository entryRepository;
 
     @Override
     public Entry createEntry(CreateEntryRequest createEntryRequest) {

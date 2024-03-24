@@ -1,21 +1,15 @@
 package diaryPackage.controller.repositories;
 
 import diaryPackage.controller.data.models.Diary;
+import diaryPackage.controller.data.models.Entry;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
+@Repository
+public interface DiaryRepository extends MongoRepository<Diary,String> {
 
-public interface DiaryRepository {
-    Diary save(Diary diary);
 
-    List<Diary> findAll();
-
-    Diary findByUsername(String username);
-
-    long count();
-
-    void delete(String username);
-
-    void delete(Diary diary);
 
 
 }
