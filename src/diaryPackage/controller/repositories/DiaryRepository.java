@@ -8,8 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface DiaryRepository extends MongoRepository<Diary,String> {
+    Diary findByUsername(String username);
 
-
-
-
+    boolean existsByUsernameAndPassword(String username, String password);
 }

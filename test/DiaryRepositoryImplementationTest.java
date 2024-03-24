@@ -1,6 +1,6 @@
 import diaryPackage.controller.data.models.Diary;
 import diaryPackage.controller.repositories.DiaryRepository;
-import diaryPackage.controller.repositories.DiaryRepositoryImplementation;
+//import diaryPackage.controller.repositories.DiaryRepositoryImplementation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
