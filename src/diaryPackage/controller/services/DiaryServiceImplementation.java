@@ -29,16 +29,15 @@ public class DiaryServiceImplementation implements DiaryService{
     }
     @Override
     public void registerUser(RegisterRequest registerRequest) {
-        validate(registerRequest);
+        validate(registerRequest.getUsername());
             Diary diary = new Diary();
             diary.setUsername(registerRequest.getUsername());
             diary.setPassword(registerRequest.getPassword());
             diaryRepository.save(diary);
     }
 
-    public void validate(RegisterRequest registerRequest) {
-        Diary diary = diaryRepository.findByUsername(registerRequest.getUsername());
-        if (diary != null) throw new UsernameExistException("Username already exist");
+    public void validate(String username) {
+        if (diaryRepository.existsById(username)) throw new UsernameExistException("%s already exist", username);
     }
 
     @Override
