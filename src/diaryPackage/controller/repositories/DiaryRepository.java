@@ -10,5 +10,5 @@ import java.util.List;
 public interface DiaryRepository extends MongoRepository<Diary,String> {
     Diary findByUsername(String username);
 
-    boolean existsByUsernameAndPassword(String username, String password);
+
 }

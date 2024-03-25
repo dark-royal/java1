@@ -37,7 +37,8 @@ public class DiaryServiceImplementation implements DiaryService{
     }
 
     public void validate(String username) {
-        if (diaryRepository.existsById(username)) throw new UsernameExistException("%s already exist", username);
+        Diary diary = new Diary();
+        if (diary.) throw new UsernameExistException("%s already exist", username);
     }
 
     @Override

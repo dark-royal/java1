@@ -1,6 +1,5 @@
 package diaryPackage.controller;
 
-import diaryPackage.controller.data.models.Entry;
 import diaryPackage.controller.request.CreateEntryRequest;
 import diaryPackage.controller.request.LoginRequest;
 import diaryPackage.controller.request.RegisterRequest;
