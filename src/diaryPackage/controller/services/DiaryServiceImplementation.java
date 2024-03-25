@@ -22,6 +22,11 @@ public class DiaryServiceImplementation implements DiaryService{
     private DiaryRepository diaryRepository;
     @Autowired
     private EntryRepository entryRepository;
+
+    @Autowired
+    public void YourServiceClassName(DiaryRepository diaryRepository) {
+        this.diaryRepository = diaryRepository;
+    }
     @Override
     public void registerUser(RegisterRequest registerRequest) {
         validate(registerRequest);
