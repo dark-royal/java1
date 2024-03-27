@@ -19,26 +19,35 @@ import java.util.List;
 public class DiaryServiceImplementation implements DiaryService{
 
     @Autowired
-    private DiaryRepository diaryRepository;
+    private  DiaryRepository diaryRepository;
     @Autowired
     private EntryRepository entryRepository;
+    @Autowired
+
+    private RegisterRequest registerRequest;
 
     @Autowired
     public void YourServiceClassName(DiaryRepository diaryRepository) {
         this.diaryRepository = diaryRepository;
     }
     @Override
-    public void registerUser(RegisterRequest registerRequest) {
-        validate(registerRequest.getUsername());
-            Diary diary = new Diary();
-            diary.setUsername(registerRequest.getUsername());
-            diary.setPassword(registerRequest.getPassword());
-            diaryRepository.save(diary);
+    public boolean registerUser(RegisterRequest registerRequest) {
+       var user = registerRequest.getUsername().toLowerCase();
+       validateUser(registerRequest.getUsername());
+            Diary newDiary = new Diary();
+            newDiary.setUsername(registerRequest.getUsername());
+            newDiary.setPassword(registerRequest.getPassword());
+            diaryRepository.save(newDiary);
+        return false;
     }
 
-    public void validate(String username) {
-        Diary diary = new Diary();
-        if (diary.) throw new UsernameExistException("%s already exist", username);
+    private Diary findUser(String username) {
+        return diaryRepository.findByUsername(username);
+    }
+
+    private void validateUser(String username) {
+        boolean exists = diaryRepository.existsByUsername(username);
+        if(exists)throw new UsernameExistException("%s already exist",username);
     }
 
     @Override
@@ -63,12 +72,15 @@ public class DiaryServiceImplementation implements DiaryService{
 
     @Override
     public Entry createEntry(CreateEntryRequest createEntryRequest) {
-        Entry entry = new Entry();
-        entry.setTitle(createEntryRequest.getTitle());
-        entry.setBody(createEntryRequest.getBody());
-        entry.setDateCreated(createEntryRequest.getDateAndTimeCreated());
-        entry.setId((int)entryRepository.count() + 1);
-        return entryRepository.save(entry);
+        if (!registerUser(registerRequest)) throw new UserNotExistException("register user first");
+        else {
+            Entry entry = new Entry();
+            entry.setTitle(createEntryRequest.getTitle());
+            entry.setBody(createEntryRequest.getBody());
+            entry.setDateCreated(createEntryRequest.getDateAndTimeCreated());
+            entry.setId((int) entryRepository.count() + 1);
+            return entryRepository.save(entry);
+        }
     }
 
     public Entry updateEntry(UpdateEntryRequest updateRequest) {

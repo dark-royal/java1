@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 @Service
 public interface DiaryService {
-    void registerUser(RegisterRequest registerRequest);
+    boolean registerUser(RegisterRequest registerRequest);
     void login(LoginRequest loginReques);
     void logout(String userName);
     List<Diary> getAll();

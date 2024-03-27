@@ -5,16 +5,17 @@ import diaryPackage.controller.request.LoginRequest;
 import diaryPackage.controller.request.RegisterRequest;
 import diaryPackage.controller.services.DiaryService;
 import diaryPackage.controller.services.DiaryServiceImplementation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class DiaryController {
 
-
-    private final DiaryService diaryService = new DiaryServiceImplementation();
-    private final RegisterRequest registerRequest = new RegisterRequest();
-    private final LoginRequest loginRequest = new LoginRequest();
-    private final CreateEntryRequest createEntryRequest = new CreateEntryRequest();
+    @Autowired
+    private  DiaryService diaryService;
+//    private final RegisterRequest registerRequest = new RegisterRequest();
+//    private final LoginRequest loginRequest = new LoginRequest();
+//    private final CreateEntryRequest createEntryRequest = new CreateEntryRequest();
 
     @PostMapping("/signUp")
     public String registerUser(@RequestBody RegisterRequest registerRequest) {
@@ -55,8 +56,8 @@ public class DiaryController {
             return e.getMessage();
         }
     }
-
-    public String findEntry(String title) {
+    @GetMapping("/findEntry")
+    public String findEntry(@RequestBody String title) {
         try {
             diaryService.findEntry(title);
             return "entry found successfully";
@@ -64,8 +65,8 @@ public class DiaryController {
             return e.getMessage();
         }
     }
-
-    public String deleteEntry(String title){
+@DeleteMapping("/deleteEntry")
+    public String deleteEntry(@RequestBody String title){
         try{
             diaryService.deleteEntry(title);
             return "entry deleted successfully";
@@ -73,7 +74,7 @@ public class DiaryController {
             return e.getMessage();
         }
     }
-
+    @PostMapping("/getAll")
     public String getAll() {
         try {
             diaryService.getAll();

@@ -27,6 +27,11 @@ public class EntryServiceImplementation implements EntryService {
 
     @Override
     public void deleteEntry(int id) {
+            Entry entry = findEntry(String.valueOf(id));
+            entryRepository.delete(entry);
+
+
+
 
 
     }
