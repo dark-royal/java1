@@ -21,7 +21,7 @@ public class DiaryController {
     public String registerUser(@RequestBody RegisterRequest registerRequest) {
         try {
             diaryService.registerUser(registerRequest);
-            return "request successfull";
+            return "register successful";
         } catch (Exception e) {
             return e.getMessage();
         }

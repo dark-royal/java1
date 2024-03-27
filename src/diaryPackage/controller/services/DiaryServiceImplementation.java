@@ -31,14 +31,14 @@ public class DiaryServiceImplementation implements DiaryService{
         this.diaryRepository = diaryRepository;
     }
     @Override
-    public boolean registerUser(RegisterRequest registerRequest) {
+    public void registerUser(RegisterRequest registerRequest) {
        var user = registerRequest.getUsername().toLowerCase();
        validateUser(registerRequest.getUsername());
             Diary newDiary = new Diary();
             newDiary.setUsername(registerRequest.getUsername());
             newDiary.setPassword(registerRequest.getPassword());
             diaryRepository.save(newDiary);
-        return false;
+
     }
 
     private Diary findUser(String username) {
@@ -72,15 +72,14 @@ public class DiaryServiceImplementation implements DiaryService{
 
     @Override
     public Entry createEntry(CreateEntryRequest createEntryRequest) {
-        if (!registerUser(registerRequest)) throw new UserNotExistException("register user first");
-        else {
             Entry entry = new Entry();
             entry.setTitle(createEntryRequest.getTitle());
             entry.setBody(createEntryRequest.getBody());
+            createEntryRequest.setAuthor(createEntryRequest.getAuthor());
             entry.setDateCreated(createEntryRequest.getDateAndTimeCreated());
             entry.setId((int) entryRepository.count() + 1);
             return entryRepository.save(entry);
-        }
+
     }
 
     public Entry updateEntry(UpdateEntryRequest updateRequest) {
